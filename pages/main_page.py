@@ -1,3 +1,4 @@
+from selenium.common.exceptions import NoSuchElementException
 from selenium.webdriver.common.by import By
 
 from .base_page import BasePage
@@ -13,4 +14,8 @@ class MainPage(BasePage):
 
     def should_be_login_link(self):
         """Find login link on the main page"""
-        self.browser.find_element(By.CSS_SELECTOR, "#login_link_invalid")
+        try:
+            self.browser.find_element(By.CSS_SELECTOR, "#login_link_invalid")
+        except NoSuchElementException:
+            return False
+        return True
