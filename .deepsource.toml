@@ -3,7 +3,8 @@ version = 1
 test_patterns = [
   "test_*.py",
   "*_test.py",
-  "conftest.py"
+  "conftest.py",
+  "tests/*"
 ]
 
 [[analyzers]]
