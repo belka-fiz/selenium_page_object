@@ -9,12 +9,12 @@ class BasePageLocators:
     """Common locators"""
 
     BASKET_TOTAL: Locator = (By.CSS_SELECTOR, "div.basket-mini")
+    LOGIN_LINK: Locator = (By.CSS_SELECTOR, "#login_link")
+    LOGIN_LINK_INVALID: Locator = (By.CSS_SELECTOR, "#login_link_invalid")
 
 
 class MainPageLocators:
     """Locators for the main page"""
-
-    LOGIN_LINK: Locator = (By.CSS_SELECTOR, "#login_link")
 
 
 class LoginPageLocators:
