@@ -34,7 +34,7 @@ class TestGuestProductPageBasketActions:
         page.should_not_be_success_message()
 
     def test_guest_cant_see_success_message(self, browser, browser_name):
-        """Test that customer don't success message right after oppening the page"""
+        """Test that customer doesn't see success message right after opening the page"""
         page = ProductPage(browser, promo_link)
         page.should_not_be_success_message()
 
@@ -100,6 +100,6 @@ class TestUserAddToBasketFromProductPage:
         page.check_product_is_added()
 
     def test_user_cant_see_success_message(self, browser, browser_name):
-        """Test that customer don't success message right after oppening the page"""
+        """Test that customer doesn't see success message right after opening the page"""
         page = ProductPage(browser, promo_link)
         page.should_not_be_success_message()
