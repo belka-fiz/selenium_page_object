@@ -1,7 +1,9 @@
 import math
 
-from selenium.common.exceptions import NoSuchElementException, NoAlertPresentException
+from selenium.common.exceptions import NoSuchElementException, NoAlertPresentException, TimeoutException
 from selenium.webdriver.common.by import By
+from selenium.webdriver.support.wait import WebDriverWait
+from selenium.webdriver.support import expected_conditions as ec
 from selenium.webdriver.remote.webdriver import WebDriver
 
 from data.constants import HEADER_TOTAL_PRICE, HEADER_VIEW_BASKET_BUTTON_TEXT
@@ -23,15 +25,36 @@ class BasePage:
         self.browser.get(self.url)
 
     def is_element_present(self, by: By, locator: str):
-        """Indicates if the element is present"""
+        """Indicates if the element is present on the page"""
         try:
             self.browser.find_element(by, locator)
         except NoSuchElementException:
             return False
         return True
 
+    def is_not_element_present(self, how, what, timeout=4):
+        """Indicates if element is absent on the page"""
+        try:
+            WebDriverWait(self.browser, timeout).until(ec.presence_of_element_located((how, what)))
+        except TimeoutException:
+            return True
+
+        return False
+
+    def is_disappeared(self, how, what, timeout=4):
+        """Check whether element has disappeared from the page"""
+        try:
+            WebDriverWait(self.browser,
+                          timeout,
+                          1,
+                          TimeoutException).until_not(ec.presence_of_element_located((how, what)))  # noqa
+        except TimeoutException:
+            return False
+
+        return True
+
     def url_contains(self, substring):
-        """Indicates if url matches the expected one"""
+        """Indicates if url contains the expected substring"""
         return substring in self.browser.current_url
 
     def solve_quiz_and_get_code(self):
