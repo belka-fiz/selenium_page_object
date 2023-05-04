@@ -9,8 +9,16 @@ class BasePageLocators:
     """Common locators"""
 
     BASKET_TOTAL: Locator = (By.CSS_SELECTOR, "div.basket-mini")
+    BASKET_LINK: Locator = (By.CSS_SELECTOR, "div.basket-mini a.btn")
     LOGIN_LINK: Locator = (By.CSS_SELECTOR, "#login_link")
     LOGIN_LINK_INVALID: Locator = (By.CSS_SELECTOR, "#login_link_invalid")
+
+
+class BasketPageLocators:
+    """Basket locators"""
+
+    EMPTY_BASKET_LABEL = (By.XPATH, "//*[contains (text(), 'Your basket is empty')]")
+    BASKET_ITEMS = (By.CSS_SELECTOR, "div.basket-items")
 
 
 class MainPageLocators:
