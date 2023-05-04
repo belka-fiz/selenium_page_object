@@ -1,3 +1,5 @@
+import uuid
+
 import pytest
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options as ChromeOptions
@@ -47,3 +49,15 @@ def pytest_generate_tests(metafunc: pytest.Metafunc):
     if "browser" in metafunc.fixturenames:
         browser = metafunc.config.getoption("browser_name")
         metafunc.parametrize('browser_name', [browser])
+
+
+@pytest.fixture(scope='function')
+def email() -> str:
+    """Generate an email for a single-use user"""
+    return f"{uuid.uuid4()}@fakemail.org"
+
+
+@pytest.fixture(scope='function')
+def password() -> str:
+    """Generate a password for a single-use user"""
+    return str(uuid.uuid4())

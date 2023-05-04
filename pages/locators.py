@@ -12,6 +12,7 @@ class BasePageLocators:
     BASKET_LINK: Locator = (By.CSS_SELECTOR, "div.basket-mini a.btn")
     LOGIN_LINK: Locator = (By.CSS_SELECTOR, "#login_link")
     LOGIN_LINK_INVALID: Locator = (By.CSS_SELECTOR, "#login_link_invalid")
+    USER_ICON: Locator = (By.CSS_SELECTOR, ".icon-user")
 
 
 class BasketPageLocators:
@@ -30,6 +31,12 @@ class LoginPageLocators:
 
     LOGIN_FORM_LOCATOR: Locator = (By.CSS_SELECTOR, "#login_form")
     REGISTRATION_FORM_LOCATOR: Locator = (By.CSS_SELECTOR, "#register_form")
+    REGISTRATION_LOGIN: Locator = (By.CSS_SELECTOR, "#id_registration-email")
+    REGISTRATION_PASSWORD: Locator = (By.CSS_SELECTOR, "#id_registration-password1")
+    REGISTRATION_CONFIRM_PASSWORD: Locator = (By.CSS_SELECTOR, "#id_registration-password2")
+    REGISTRATION_SUBMIT: Locator = (By.CSS_SELECTOR, "button[name=\"registration_submit\"]")
+    success_xpath = "// div[contains(@class,\"alertinner\")and contains(text(), \"Thanks for registering!\")]"
+    REGISTRATION_SUCCESS: Locator = (By.XPATH, success_xpath)
 
 
 class ProductPageLocators:
