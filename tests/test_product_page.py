@@ -11,6 +11,7 @@ promo_link = 'http://selenium1py.pythonanywhere.com/catalogue/the-shellcoders-ha
 
 class TestGuestProductPageActions:
     """Test set for guest user action on/from product page"""
+
     @pytest.mark.parametrize('link', [
         'http://selenium1py.pythonanywhere.com/catalogue/the-shellcoders-handbook_209/?promo=newYear',
         'http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207/?promo=newYear2019'
