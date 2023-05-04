@@ -75,6 +75,15 @@ class BasePage:
         except NoAlertPresentException:
             print("No second alert presented")
 
+    def go_to_login_page(self):
+        """Click login link"""
+        login_link = self.browser.find_element(*BasePageLocators.LOGIN_LINK)
+        login_link.click()
+
+    def should_be_login_link(self):
+        """Find login link on the main page"""
+        assert self.is_element_present(*BasePageLocators.LOGIN_LINK), "Login link is not found on the page"
+
     def get_header_basket_total(self):
         """Get total price of the basket"""
         text = self.browser.find_element(*BasePageLocators.BASKET_TOTAL).text
