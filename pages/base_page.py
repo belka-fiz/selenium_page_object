@@ -88,3 +88,7 @@ class BasePage:
         """Get total price of the basket"""
         text = self.browser.find_element(*BasePageLocators.BASKET_TOTAL).text
         return text[len(HEADER_TOTAL_PRICE):-(len(HEADER_VIEW_BASKET_BUTTON_TEXT))].strip()
+
+    def go_to_basket_page(self):
+        """Go to Basket page"""
+        self.browser.find_element(*BasePageLocators.BASKET_LINK).click()
