@@ -36,3 +36,24 @@ class ProductPage(BasePage):
         assert self.get_added_item_name() == self.product_name, "Added item name does not match with product name"
         header_total = self.get_header_basket_total()
         assert header_total == self.price, f"Header total mismatch. Expected \"{self.price}\", got \"{header_total}\"."
+
+    def should_be_success_message(self) -> None:
+        """Check the success message is displayed"""
+        assert self.is_element_present(*ProductPageLocators.ADDED_ITEM_NAME), \
+            "There is no success message with product name."
+        assert self.is_element_present(*ProductPageLocators.UPDATED_BASKET_TOTAL_ALERT), \
+            "There is no success message with price."
+
+    def should_not_be_success_message(self) -> None:
+        """Check the success message is not displayed"""
+        assert self.is_not_element_present(*ProductPageLocators.ADDED_ITEM_NAME), \
+            "There is a success message with product name. Expected not to be"
+        assert self.is_not_element_present(*ProductPageLocators.UPDATED_BASKET_TOTAL_ALERT), \
+            "There is a success message with price. Expected not to be"
+
+    def should_disappear_success_message(self) -> None:
+        """Check that success message is no longer displayed"""
+        assert self.is_disappeared(*ProductPageLocators.ADDED_ITEM_NAME), \
+            "There is a success message with product name. Expected not to be"
+        assert self.is_disappeared(*ProductPageLocators.UPDATED_BASKET_TOTAL_ALERT), \
+            "There is a success message with price. Expected not to be"
