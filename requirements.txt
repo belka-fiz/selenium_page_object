@@ -4,10 +4,9 @@ certifi==2022.12.7
 cfgv==3.3.1
 distlib==0.3.6
 exceptiongroup==1.1.1
-execnet==1.9.0
 filelock==3.12.0
 h11==0.14.0
-identify==2.5.23
+identify==2.5.24
 idna==3.4
 iniconfig==2.0.0
 nodeenv==1.7.0
